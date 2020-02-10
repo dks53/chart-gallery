@@ -40,8 +40,8 @@ values = []
 for p in range(0, len(pie_data)):
     values.append(pie_data[p]["market_share"])
 
-#trace = go.Pie(labels=labels, values=values)
-#plotly.offline.plot([trace], filename="basic_pie_chart.html", auto_open=True)
+trace = go.Pie(labels=labels, values=values)
+plotly.offline.plot([trace], filename="basic_pie_chart.html", auto_open=True)
 
 
 #
@@ -84,9 +84,6 @@ y = []
 for q in range(0, len(line_data)):
     y.append(line_data[q]["stock_price_usd"])
 
-print(x)
-print(y)
-
 plotly.offline.plot({
     "data": [go.Scatter(x=x, y=y)],
     "layout": go.Layout(title="Stock Price USA")
@@ -108,5 +105,22 @@ bar_data = [
 
 print("----------------")
 print("GENERATING BAR CHART...")
-print(bar_data) # TODO: create a horizontal bar chart based on the bar_data
+
+a = []
+
+for q in range(0, len(bar_data)):
+    a.append(bar_data[q]["genre"])
+
+b = []
+
+for m in range(0, len(bar_data)):
+    b.append(bar_data[m]["viewers"])
+
+bar = go.Figure(go.Bar(
+            x=b,
+            y=a,
+            orientation='h'))
+
+bar.show()
+
 print("----------------")
