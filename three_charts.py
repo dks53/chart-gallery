@@ -87,6 +87,11 @@ for q in range(0, len(line_data)):
 print(x)
 print(y)
 
+plotly.offline.plot({
+    "data": [go.Scatter(x=x, y=y)],
+    "layout": go.Layout(title="Stock Price USA")
+}, auto_open=True)
+
 #
 # CHART 3 (HORIZONTAL BAR)
 #
